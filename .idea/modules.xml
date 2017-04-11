@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HCI.iml" filepath="$PROJECT_DIR$/HCI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinuxManGUI.iml" filepath="$PROJECT_DIR$/LinuxManGUI.iml" />
     </modules>
   </component>
 </project>
