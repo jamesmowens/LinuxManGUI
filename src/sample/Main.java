@@ -20,7 +20,7 @@ public class Main extends Application {
         ArrayList<Page> pages = parser.parsePages();
 
         Page pageToDisplay = pages.get(0);
-        
+
     }
 
 
