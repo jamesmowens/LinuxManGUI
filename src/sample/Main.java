@@ -12,14 +12,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        //Bolier plate javafx code not relevent to checkpoint
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
         XMLParser parser = new XMLParser();
-        ArrayList<Page> pages = parser.parsePages();
+        //--------------------------------------------------
 
-        Page pageToDisplay = pages.get(0);
+        //create parser object and parse xml
+        ArrayList<Page> pages = parser.parsePages();
+        Page pageToDisplay = pages.get(0); //when the GUI is implemented
 
     }
 
