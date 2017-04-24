@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Page;
 import model.XMLParser;
+import section.*;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         //Bolier plate javafx code not relevent to checkpoint
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/section/section.fxml"));
+
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();

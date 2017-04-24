@@ -9,25 +9,19 @@ import java.util.HashMap;
 public class Section {
 
     String name;
-    HashMap<String,ArrayList<Page>> pages;
+    ArrayList<Page> pages;
 
     public Section(String name){
         this.name = name;
-        this.pages = new HashMap<>();
+        this.pages = new ArrayList<>();
     }
 
-    public ArrayList<Page> getPagesForSection(String sectionName) {
-        return pages.get(sectionName);
+    public ArrayList<Page> getPages() {
+        return pages;
     }
 
-    public void addPageToSection(String secName, Page page){
-        if(pages.containsKey(secName)){
-            pages.get(secName).add(page);
-        } else {
-            ArrayList<Page> newPageList = new ArrayList<>();
-            newPageList.add(page);
-            pages.put(secName,newPageList);
-        }
+    public void addPageToSection(Page page){
+        pages.add(page);
     }
 
 
