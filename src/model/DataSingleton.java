@@ -7,7 +7,8 @@ public class DataSingleton {
 
     static DataSingleton data = new DataSingleton();
 
-    private DataSingleton(){};
+
+    private DataSingleton(){}
 
     public static DataSingleton getInstance(){
         return data;

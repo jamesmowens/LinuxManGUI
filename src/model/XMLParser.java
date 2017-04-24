@@ -1,4 +1,4 @@
-package sample;
+package model;
 
 import model.Page;
 import org.w3c.dom.*;
