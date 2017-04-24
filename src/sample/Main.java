@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Page;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class Main extends Application {
         //Bolier plate javafx code not relevent to checkpoint
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
         XMLParser parser = new XMLParser();
         //--------------------------------------------------

@@ -1,11 +1,11 @@
 package sample;
 
+import model.Page;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Created by jamesowens on 4/11/17.
