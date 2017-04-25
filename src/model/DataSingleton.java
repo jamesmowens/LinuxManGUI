@@ -11,12 +11,14 @@ public class DataSingleton {
     static DataSingleton data = new DataSingleton();
     private HashMap<String,Section> sections;
     private String currentSection;
+    private Page currentPage;
 
 
     private DataSingleton(){
         sections = new HashMap<>();
         sections.put("usrcmds",getExampleSection());
         currentSection = null;
+        currentPage = new XMLParser().parsePages().get(0);
     }
 
     public static DataSingleton getInstance(){
@@ -57,6 +59,10 @@ public class DataSingleton {
         pages.add(p4);
 
         return pages;
+    }
+
+    public Page getCurrentPage(){
+        return currentPage;
     }
 
 

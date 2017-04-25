@@ -20,4 +20,14 @@ public class Page {
         return title;
     }
 
+    public ArrayList<String> getChunkNames() {
+        return sectionNames;
+    }
+
+    public String getChunkText(String key) {
+        return sections.get(key);
+    }
+
+
+
 }

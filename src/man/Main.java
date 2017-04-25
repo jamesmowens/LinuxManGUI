@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         //Bolier plate javafx code not relevent to checkpoint
-        Parent root = FXMLLoader.load(getClass().getResource("/man/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/page/page.fxml"));
 
         primaryStage.setTitle("Linux Manual");
         primaryStage.setScene(new Scene(root, 600, 400));
