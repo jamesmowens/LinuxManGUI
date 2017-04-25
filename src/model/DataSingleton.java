@@ -15,6 +15,7 @@ public class DataSingleton {
 
     private DataSingleton(){
         sections = new HashMap<>();
+        sections.put("usrcmds",getExampleSection());
         currentSection = null;
     }
 
@@ -27,12 +28,20 @@ public class DataSingleton {
         return sections.get(sectionName).getPages();
     }
 
-    public void setCurrentSection(String section){
-        currentSection = section;
+    public void setCurrentSection(String sectionKey){
+        currentSection = sectionKey;
     }
 
     public String getCurrentSection(){
         return currentSection;
+    }
+
+    public Section getExampleSection(){
+        return new Section("User Commands",getExamplePages());
+    }
+
+    public String getCurrentSectionName() {
+       return sections.get(currentSection).getName();
     }
 
     public ArrayList<Page> getExamplePages(){
@@ -48,8 +57,9 @@ public class DataSingleton {
         pages.add(p4);
 
         return pages;
-
     }
+
+
 
 
 }

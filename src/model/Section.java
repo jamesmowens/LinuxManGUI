@@ -16,6 +16,11 @@ public class Section {
         this.pages = new ArrayList<>();
     }
 
+    public Section(String name,ArrayList<Page> pages) {
+        this.name = name;
+        this.pages = pages;
+    }
+
     public ArrayList<Page> getPages() {
         return pages;
     }
@@ -24,6 +29,9 @@ public class Section {
         pages.add(page);
     }
 
+    public String getName() {
+        return name;
+    }
 
 
 }

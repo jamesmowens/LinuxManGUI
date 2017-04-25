@@ -1,15 +1,11 @@
-package sample;
+package man;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Page;
 import model.XMLParser;
-import section.*;
-
-import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -17,17 +13,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         //Bolier plate javafx code not relevent to checkpoint
-        Parent root = FXMLLoader.load(getClass().getResource("/section/section.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/man/sample.fxml"));
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Linux Manual");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
         XMLParser parser = new XMLParser();
         //--------------------------------------------------
 
         //create parser object and parse xml
-        ArrayList<Page> pages = parser.parsePages();
-        Page pageToDisplay = pages.get(0); //when the GUI is implemented
+        //ArrayList<Page> pages = parser.parsePages();
+        //Page pageToDisplay = pages.get(0); //when the GUI is implemented
 
     }
 

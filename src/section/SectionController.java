@@ -1,19 +1,21 @@
 package section;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import model.DataSingleton;
 import model.Page;
 
-import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,11 +27,16 @@ public class SectionController implements Initializable {
 
     @FXML
     VBox container;
+    @FXML
+    Label titleLabel;
+
+    ArrayList<Page> pages;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        titleLabel.setText(DataSingleton.getInstance().getCurrentSectionName());
 
-        ArrayList<Page> pages = DataSingleton.getInstance().getExamplePages();
+        pages = DataSingleton.getInstance().getExamplePages();
         for(int i =0; i<pages.size();i++){
             System.out.println("Hello");
 
@@ -72,4 +79,19 @@ public class SectionController implements Initializable {
             System.out.println("Works");
         }
     }
+
+    public void goBackToSectionView(){
+        Stage stage = (Stage) container.getScene().getWindow();
+        DataSingleton.getInstance().setCurrentSection(null);
+        try{
+            System.out.println("Attempting to change scene!");
+            Parent parent = FXMLLoader.load(getClass().getResource("/man/sample.fxml"));
+            stage.setScene(new Scene(parent,600,400));
+
+        } catch (IOException e){
+            System.err.println("Couldn't find the screen layout.");
+
+        }
+    }
+
 }

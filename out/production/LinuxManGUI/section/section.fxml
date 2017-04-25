@@ -22,15 +22,19 @@
                 </Button>
             </right>
             <center>
-                <Label text="Placeholder" textFill="WHITE" BorderPane.alignment="CENTER">
+                <Label fx:id="titleLabel" text="Placeholder" textFill="WHITE" BorderPane.alignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
             </center>
-            <left>
-                <Pane prefHeight="200.0" prefWidth="75.0" BorderPane.alignment="CENTER" />
-            </left>
+         <left>
+            <Button mnemonicParsing="false" onAction="#goBackToSectionView" text="Back" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
         </BorderPane>
     </top>
    <center>
