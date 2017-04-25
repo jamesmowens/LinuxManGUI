@@ -34,6 +34,9 @@
         </BorderPane>
     </top>
    <center>
-      <ScrollPane fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ScrollPane BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="container" alignment="CENTER_LEFT" />
+         </content></ScrollPane>
    </center>
 </BorderPane>

@@ -16,4 +16,8 @@ public class Page {
         this.sectionNames =sectionNames;
     }
 
+    public String getTitle(){
+        return title;
+    }
+
 }
