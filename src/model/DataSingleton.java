@@ -9,44 +9,51 @@ import java.util.HashMap;
 public class DataSingleton {
 
     static DataSingleton data = new DataSingleton();
-    private HashMap<String,Section> sections;
-    private String currentSection;
+    //private HashMap<String,Section> sections;
+    private ArrayList<Section> sections;
+    private Section currentSection;
     private Page currentPage;
 
 
     private DataSingleton(){
-        sections = new HashMap<>();
-        sections.put("usrcmds",getExampleSection());
-        currentSection = "usrcmds";
-        currentPage = new XMLParser().parsePages().get(0);
+        XMLParser parser = new XMLParser();
+        sections = parser.parsePages();
+        currentSection = null;
+        currentPage = null;
+        //currentPage = new XMLParser().parsePages().get(0);
     }
 
     public static DataSingleton getInstance(){
         return data;
     }
 
-
-    public ArrayList<Page> getPagesForSection(String sectionName){
-        return sections.get(sectionName).getPages();
+    public ArrayList<Page> getPagesForCurrentSection(){
+        return currentSection.getPages();
     }
 
-    public void setCurrentSection(String sectionKey){
-        currentSection = sectionKey;
+    public void setCurrentSection(Integer index) {
+        if (index == null) {
+            currentSection = null;
+        } else {
+            currentSection = sections.get(index);
+        }
     }
 
-    public String getCurrentSection(){
+    public Section getCurrentSection(){
         return currentSection;
     }
 
-    public Section getExampleSection(){
+
+
+   /* public Section getExampleSection(){
         return new Section("User Commands",getExamplePages());
-    }
+    }*/
 
     public String getCurrentSectionName() {
-       return sections.get(currentSection).getName();
+       return currentSection.getName();
     }
 
-    public ArrayList<Page> getExamplePages(){
+   /* public ArrayList<Page> getExamplePages(){
         Page p1 = new Page("Page 1",new HashMap<>(),new ArrayList<>());
         Page p2 = new Page("Page 2",new HashMap<>(),new ArrayList<>());
         Page p3 = new Page("Page 3",new HashMap<>(),new ArrayList<>());
@@ -59,7 +66,7 @@ public class DataSingleton {
         pages.add(p4);
 
         return pages;
-    }
+    }*/
 
     public Page getCurrentPage(){
         return currentPage;

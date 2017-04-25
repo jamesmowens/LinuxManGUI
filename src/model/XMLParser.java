@@ -40,50 +40,69 @@ public class XMLParser {
 
     }
 
-    public ArrayList<Page> parsePages() {
+    public ArrayList<Section> parsePages() {
         //get the page entry nodes
-        NodeList pageNodes = doc.getElementsByTagName("entry");
-        ArrayList<Page> pageList = new ArrayList<>();
+        //NodeList pageNodes = doc.getElementsByTagName("entry");
+        ArrayList<Section> sectionList = new ArrayList<>();
 
-        //for each page entry
-        for(int i = 0; i<pageNodes.getLength();i++){
-            Node pNode = pageNodes.item(i);
-            if(pNode.getNodeType() == Node.ELEMENT_NODE){ //should always be true
+        NodeList sectionNodes = doc.getElementsByTagName("section");
 
-                Element page = (Element) pNode;
-                String pageName = page.getElementsByTagName("name").item(0).getTextContent(); //get the page name
+        for (int h = 0;h<sectionNodes.getLength();h++) {
+            Node sNode = sectionNodes.item(h);
+            if (sNode.getNodeType() == Node.ELEMENT_NODE) { //should always be true
+                Element section = (Element) sNode;
+                String sName = ((Element) sNode).getElementsByTagName("name").item(0).getTextContent();
+                NodeList pageNodes = section.getElementsByTagName("entry");
 
-                System.out.println("Title: "+pageName);
-                System.out.println();
+                ArrayList<Page> pageList = new ArrayList<>();
 
-                //get all the page sections
-                NodeList sections = ((Element) pNode).getElementsByTagName("section");
-                ArrayList<String> sectionNames = new ArrayList<>();
-                HashMap<String,String> sectionContents = new HashMap<>();
-                //for each page section
-                for(int j = 0; j<sections.getLength();j++){
-                    Element section = (Element) sections.item(j);
 
-                    String sectionName = section.getAttribute("name"); //get the name
-                    String sectionBody = section.getTextContent(); //get the body
+                //for each page entry
+                for (int i = 0; i < pageNodes.getLength(); i++) {
+                    Node pNode = pageNodes.item(i);
+                    if (pNode.getNodeType() == Node.ELEMENT_NODE) { //should always be true
 
-                    sectionNames.add(sectionName);
-                    sectionContents.put(sectionName,sectionBody);
+                        Element page = (Element) pNode;
+                        String pageName = page.getElementsByTagName("name").item(0).getTextContent(); //get the page name
 
-                    System.out.println("Section Name: " + sectionName);
+                        String pageSDesc = page.getElementsByTagName("sdesc").item(0).getTextContent(); //get the page short description
 
-                    System.out.println("Body: ");
-                    System.out.println(section.getTextContent());
+                        System.out.println("Title: " + pageName);
+                        System.out.println();
 
-                    System.out.println();
+                        //get all the page sections
+                        NodeList sections = ((Element) pNode).getElementsByTagName("chunk");
+                        ArrayList<String> sectionNames = new ArrayList<>();
+                        HashMap<String, String> sectionContents = new HashMap<>();
+                        //for each page section
+                        for (int j = 0; j < sections.getLength(); j++) {
+                            Element chunk = (Element) sections.item(j);
+
+                            String sectionName = chunk.getAttribute("name"); //get the name
+                            String sectionBody = chunk.getTextContent(); //get the body
+
+                            sectionNames.add(sectionName);
+                            sectionContents.put(sectionName, sectionBody);
+
+                            System.out.println("Section Name: " + sectionName);
+
+                            System.out.println("Body: ");
+                            System.out.println(chunk.getTextContent());
+
+                            System.out.println();
+                        }
+                        //create page object and put it in the list
+                        pageList.add(new Page(pageName, pageSDesc, sectionContents, sectionNames));
+                    }
+
                 }
-                //create page object and put it in the list
-                pageList.add(new Page(pageName,sectionContents,sectionNames));
+                sectionList.add(new Section(sName,pageList));
             }
-
         }
 
-        return pageList;
+        return sectionList;
+
+
 
     }
 

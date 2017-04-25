@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.DataSingleton;
@@ -17,14 +18,16 @@ public class Controller {
 
     public void usrCmdsSelected(){
         System.out.println("User Commands!");
-        DataSingleton.getInstance().setCurrentSection("usrcmds");
+        DataSingleton.getInstance().setCurrentSection(0);
         goToSectionView();
     }
 
     public void sysCmdsSelected(){
+        DataSingleton.getInstance().setCurrentSection(1);
         System.out.println("System Commands!");
     }
-    public void cLibsSelected(){
+    public void cLibsSelected() {
+        DataSingleton.getInstance().setCurrentSection(2);
         System.out.println("C Library Functions!");
     }
 

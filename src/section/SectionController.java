@@ -36,9 +36,8 @@ public class SectionController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         titleLabel.setText(DataSingleton.getInstance().getCurrentSectionName());
 
-        pages = DataSingleton.getInstance().getExamplePages();
+        pages = DataSingleton.getInstance().getPagesForCurrentSection();
         for(int i =0; i<pages.size();i++){
-            System.out.println("Hello");
 
             HBox hbox = new HBox();
             //hbox.setPadding(new Insets(15, 12, 15, 12));
@@ -63,7 +62,6 @@ public class SectionController implements Initializable {
             hbox.getChildren().add(desc);
 
             container.getChildren().add(hbox);
-            System.out.println("Goods");
             container.requestLayout();
         }
 
@@ -72,16 +70,11 @@ public class SectionController implements Initializable {
     private void selectRowAtIndex(int index){
 
         System.out.println(index);
+        DataSingleton.getInstance().setCurrentPage(pages.get(index));
 
         goToPageView();
     }
 
-    public void tester(){
-        System.out.println("Called");
-        if(container!=null){
-            System.out.println("Works");
-        }
-    }
 
     public void goToManView(){
         Stage stage = (Stage) container.getScene().getWindow();

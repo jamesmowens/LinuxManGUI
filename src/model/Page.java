@@ -7,11 +7,13 @@ import java.util.HashMap;
 public class Page {
 
     String title;
+    String sdesc;
     HashMap<String,String> sections;
     ArrayList<String> sectionNames;
 
-    public Page(String title, HashMap<String,String> sections,ArrayList<String> sectionNames) {
+    public Page(String title, String sDesc, HashMap<String,String> sections,ArrayList<String> sectionNames) {
         this.title = title;
+        this.sdesc = sDesc;
         this.sections = sections;
         this.sectionNames =sectionNames;
     }

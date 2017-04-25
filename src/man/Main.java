@@ -5,7 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Section;
 import model.XMLParser;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -22,13 +25,14 @@ public class Main extends Application {
         //--------------------------------------------------
 
         //create parser object and parse xml
-        //ArrayList<Page> pages = parser.parsePages();
+        //ArrayList<Section> pages = parser.parsePages();
         //Page pageToDisplay = pages.get(0); //when the GUI is implemented
 
     }
 
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }
