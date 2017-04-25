@@ -22,6 +22,8 @@ public class Page {
         return title;
     }
 
+    public String getSdesc(){return sdesc; }
+
     public ArrayList<String> getChunkNames() {
         return sectionNames;
     }

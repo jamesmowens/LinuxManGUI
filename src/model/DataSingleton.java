@@ -20,7 +20,6 @@ public class DataSingleton {
         sections = parser.parsePages();
         currentSection = null;
         currentPage = null;
-        //currentPage = new XMLParser().parsePages().get(0);
     }
 
     public static DataSingleton getInstance(){
@@ -32,7 +31,7 @@ public class DataSingleton {
     }
 
     public void setCurrentSection(Integer index) {
-        if (index == null) {
+        if (index ==  null || index>=sections.size()) {
             currentSection = null;
         } else {
             currentSection = sections.get(index);

@@ -55,7 +55,7 @@ public class SectionController implements Initializable {
             hbox.getChildren().add(title);
             title.setFont(Font.font(24));
 
-            Label desc = new Label("This is a decription");
+            Label desc = new Label(pages.get(i).getSdesc());
             desc.setFont(Font.font(18));
             desc.setTextFill(Color.web("#d3d3d3"));
 

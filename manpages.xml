@@ -2,16 +2,145 @@
   <manual>
     <section>
       <name>User Commands</name>
+
+        <entry>
+            <name>0launch</name>
+            <sdesc>download and run programs by url</sdesc>
+            <chunk name="Synopsis">
+                0launch [OPTION]... PROGRAM [ARG]...
+            </chunk>
+            <chunk name="Description">
+                0launch runs the given program. PROGRAM is either a URL in the form 'http://site/program.xml' or a local path name like '/path/to/program.xml'.
+                If the program is not already on your computer, 0launch downloads information about which versions are available, and lets you choose one to download. It will also (automatically) do the same for any libraries the program needs.
+            </chunk>
+            <chunk name="Options">
+                0launch takes many of the same options as "0install run". This page just lists the differences:
+
+                -d, --download-only
+                Deprecated. Use "0install download" instead.
+                -f, --feed
+
+                Deprecated. Use "0install add-feed" or "0install remove-feed" instead.
+
+                --get-selections
+                Deprecated. Use "0install select" instead.
+
+                -i, --import
+                Deprecated. Use "0install import" instead.
+
+                -l, --list
+                Deprecated. Use "0install list" instead.
+                --select-only
+                Deprecated. Use "0install select" instead.
+
+                --set-selections=FILE
+                Deprecated. Just give FILE as the PROGRAM.
+
+                --show
+                Deprecated. Use "0install select" instead.
+            </chunk>
+        </entry>
         <entry>
           <name>ls</name>
           <sdesc>list directory contents</sdesc>
           <chunk name="Synopsis">
             ls [-ABCFGHLOPRSTUW@abcdefghiklmnopqrstuwx1] [file ...]
           </chunk>
-          <chunk name="desc">
+          <chunk name="Description ">
             For each operand that names a file of a type other than directory, ls displays its name as well as any requested, associated information.  For each operand that names a file of type directory, ls displays the names of files contained within that directory, as well as any requested, associated information.
               If no operands are given, the contents of the current directory are displayed.  If more than one operand is given, non-directory operands are displayed first; directory and non-directory operands are sorted separately and in lexicographical order.
           </chunk>
+        </entry>
+        <entry>
+            <name>pwd</name>
+            <sdesc>print the name of the current/working directory</sdesc>
+            <chunk name="Synopsis">
+                pwd [OPTION]...
+            </chunk>
+            <chunk name="Description">
+                Print the full filename of the current working directory.
+            </chunk>
+            <chunk name="Options">
+                -L, --logical
+                use PWD from environment, even if it contains symlinks
+                -P, --physical
+                avoid all symlinks
+                --help
+                display this help and exit
+                --version
+                output version information and exit
+
+                NOTE: your shell may have its own version of pwd, which usually supersedes the version described here. Please refer to your shell's documentation for details about the options it supports
+            </chunk>
+        </entry>
+        <entry>
+            <name>qselect</name>
+            <sdesc>select batch jobs</sdesc>
+            <chunk name="Synopsis">
+                qselect [-a [op]date_time][-A account_string][-c [op]interval]
+                [-h hold_list][-l resource_list][-N name][-p [op]priority]
+                [-q destination][-r y|n][-s states][-u user_list]
+            </chunk>
+            <chunk name="Description">
+                To select a set of batch jobs is to return the batch job_identifiers for each batch job that meets a list of selection criteria. A set of batch jobs is selected by a request to a batch server. The qselect utility is a user-accessible batch client that requests the selection of batch jobs.
+                Upon successful completion, the qselect utility shall have returned a list of zero or more batch job_identifiers that meet the criteria specified by the options and option-arguments presented to the utility.
+                The qselect utility shall select batch jobs by sending a Select Jobs Request to a batch server. The qselect utility shall not exit until the server replies to each request generated.
+                For each option presented to the qselect utility, the utility shall restrict the set of selected batch jobs as described in the OPTIONS section.
+                The qselect utility shall not restrict selection of batch jobs except by authorization and as required by the options presented to the utility.
+                When an option is specified with a mandatory or optional op component to the option-argument, then op shall specify a relation between the value of a certain batch job attribute and the value component of the option-argument. If an op is allowable on an option, then the description of the option letter indicates the op as either mandatory or optional. Acceptable strings for the op component, and the relation the string indicates, are shown in the following list:
+            </chunk>
+            <chunk name="options">
+            The qselect utility shall conform to the Base Definitions volume of IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.
+
+                The following options shall be supported by the implementation:
+
+                -a [op]date_time
+                Restrict selection to a specific time, or a range of times.
+
+                The qselect utility shall select only batch jobs for which the value of the Execution_Time attribute is related to the Epoch equivalent of the local time expressed by the value of the date_time component of the option-argument in the manner indicated by the value of the op component of the option-argument.
+
+                The qselect utility shall accept a date_time component of the option-argument that conforms to the syntax of the time operand of the touch utility.
+
+                If the op component of the option-argument is not presented to the qselect utility, the utility shall select batch jobs for which the Execution_Time attribute is equal to the date_time component of the option-argument.
+
+                When comparing times, the qselect utility shall use the following definitions for the op component of the option-argument:
+            </chunk>
+        </entry>
+
+    </section>
+
+    <section>
+        <name>System Commands</name>
+        <entry>
+            <name>accept</name>
+            <sdesc>accept a connection on a socket</sdesc>
+            <chunk name="Synopsis">
+                #include &lt;sys/types.h\&gt;
+                /* See NOTES */#include &lt;sys/socket.h&gt;int accept(int
+                sockfd, struct sockaddr *addr, socklen_t *addrlen);
+                #define _GNU_SOURCE
+                /* See feature_test_macros(7) */
+                #include &lt;sys/socket.h&gt;int accept4(int
+                sockfd, struct sockaddr *addr,            socklen_t *addrlen, int flags);
+            </chunk>
+            <chunk name="Description">
+                The accept() system call is used with connection-based socket types (SOCK_STREAM, SOCK_SEQPACKET). It extracts the first connection request on the queue of pending connections for the listening socket, sockfd, creates a new connected socket, and returns a new file descriptor referring to that socket. The newly created socket is not in the listening state. The original socket sockfd is unaffected by this call.
+                The argument sockfd is a socket that has been created with socket(2), bound to a local address with bind(2), and is listening for connections after a listen(2).
+                The argument addr is a pointer to a sockaddr structure. This structure is filled in with the address of the peer socket, as known to the communications layer. The exact format of the address returned addr is determined by the socket's address family (see socket(2) and the respective protocol man pages). When addr is NULL, nothing is filled in; in this case, addrlen is not used, and should also be NULL.
+                The addrlen argument is a value-result argument: the caller must initialize it to contain the size (in bytes) of the structure pointed to by addr; on return it will contain the actual size of the peer address.
+                The returned address is truncated if the buffer provided is too small; in this case, addrlen will return a value greater than was supplied to the call.
+                If no pending connections are present on the queue, and the socket is not marked as nonblocking, accept() blocks the caller until a connection is present. If the socket is marked nonblocking and no pending connections are present on the queue, accept() fails with the error EAGAIN or EWOULDBLOCK.
+                In order to be notified of incoming connections on a socket, you can use select(2) or poll(2). A readable event will be delivered when a new connection is attempted and you may then call accept() to get a socket for that connection. Alternatively, you can set the socket to deliver SIGIO when activity occurs on a socket; see socket(7) for details.
+                For certain protocols which require an explicit confirmation, such as DECNet, accept() can be thought of as merely dequeuing the next connection request and not implying confirmation. Confirmation can be implied by a normal read or write on the new file descriptor, and rejection can be implied by closing the new socket. Currently only DECNet has these semantics on Linux.
+            </chunk>
+        </entry>
+    </section>
+
+    <section>
+        <name>C Library Functions</name>
+        <entry>
+            <name>addchstr</name>
+            <chunk></chunk>
         </entry>
     </section>
 

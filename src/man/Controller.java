@@ -25,10 +25,12 @@ public class Controller {
     public void sysCmdsSelected(){
         DataSingleton.getInstance().setCurrentSection(1);
         System.out.println("System Commands!");
+        goToSectionView();
     }
     public void cLibsSelected() {
         DataSingleton.getInstance().setCurrentSection(2);
         System.out.println("C Library Functions!");
+        goToSectionView();
     }
 
     public void goToSectionView(){
