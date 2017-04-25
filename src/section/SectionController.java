@@ -70,7 +70,10 @@ public class SectionController implements Initializable {
     }
 
     private void selectRowAtIndex(int index){
+
         System.out.println(index);
+
+        goToPageView();
     }
 
     public void tester(){
@@ -80,12 +83,25 @@ public class SectionController implements Initializable {
         }
     }
 
-    public void goBackToSectionView(){
+    public void goToManView(){
         Stage stage = (Stage) container.getScene().getWindow();
         DataSingleton.getInstance().setCurrentSection(null);
         try{
             System.out.println("Attempting to change scene!");
             Parent parent = FXMLLoader.load(getClass().getResource("/man/sample.fxml"));
+            stage.setScene(new Scene(parent,600,400));
+
+        } catch (IOException e){
+            System.err.println("Couldn't find the screen layout.");
+
+        }
+    }
+
+    public void goToPageView(){
+        Stage stage = (Stage) container.getScene().getWindow();
+        try{
+            System.out.println("Attempting to change scene!");
+            Parent parent = FXMLLoader.load(getClass().getResource("/page/page.fxml"));
             stage.setScene(new Scene(parent,600,400));
 
         } catch (IOException e){

@@ -17,7 +17,7 @@ public class DataSingleton {
     private DataSingleton(){
         sections = new HashMap<>();
         sections.put("usrcmds",getExampleSection());
-        currentSection = null;
+        currentSection = "usrcmds";
         currentPage = new XMLParser().parsePages().get(0);
     }
 
@@ -63,6 +63,10 @@ public class DataSingleton {
 
     public Page getCurrentPage(){
         return currentPage;
+    }
+
+    public void setCurrentPage(Page page){
+        currentPage = page;
     }
 
 
