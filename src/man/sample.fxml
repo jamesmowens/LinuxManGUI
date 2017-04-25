@@ -78,7 +78,7 @@
    <top>
       <BorderPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #56BDED;" BorderPane.alignment="CENTER">
          <right>
-            <Button mnemonicParsing="false" text="Search" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goToSearchView" text="Search" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="10.0" />
                </BorderPane.margin>

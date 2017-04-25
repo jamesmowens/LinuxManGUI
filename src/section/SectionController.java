@@ -25,14 +25,20 @@ import java.util.ResourceBundle;
  */
 public class SectionController implements Initializable {
 
+    //FXML outlets
     @FXML
     VBox container;
     @FXML
     Label titleLabel;
 
+    //The pages in the section
     ArrayList<Page> pages;
 
-    @Override
+
+    /**
+     * Sets up all the parts of the screen that need to be setup when loaded
+     * Specifically creates, formats, and displays all the page cells for the section that was just selected
+     */
     public void initialize(URL location, ResourceBundle resources) {
         titleLabel.setText(DataSingleton.getInstance().getCurrentSectionName());
 
@@ -43,7 +49,6 @@ public class SectionController implements Initializable {
             //hbox.setPadding(new Insets(15, 12, 15, 12));
             hbox.setSpacing(10);
             hbox.setStyle("-fx-border-color: lightgray");
-            //hbox.setStyle("-fx-background-color: #336699;");
             hbox.setPadding(new Insets(0,0,0,10));
             hbox.setPrefSize(600,100);
             hbox.setAlignment(Pos.CENTER_LEFT);
@@ -67,6 +72,10 @@ public class SectionController implements Initializable {
 
     }
 
+    /**
+     * Called by the cell when it is clicked this sets the current page to the one that was just sleected
+     * @param index The index of the cell that was selected
+     */
     private void selectRowAtIndex(int index){
 
         System.out.println(index);
@@ -76,6 +85,9 @@ public class SectionController implements Initializable {
     }
 
 
+    /**
+     * Goes back to the man veiew
+     */
     public void goToManView(){
         Stage stage = (Stage) container.getScene().getWindow();
         DataSingleton.getInstance().setCurrentSection(null);
@@ -90,6 +102,9 @@ public class SectionController implements Initializable {
         }
     }
 
+    /**
+     * When a page in selected this transitions the current scene to the page view for the selected page
+     */
     public void goToPageView(){
         Stage stage = (Stage) container.getScene().getWindow();
         try{

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LinuxManGUI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LinuxManGUI_jar</output-path>
+    <root id="archive" name="LinuxManGUI.jar">
+      <element id="module-output" name="LinuxManGUI" />
+    </root>
+  </artifact>
+</component>

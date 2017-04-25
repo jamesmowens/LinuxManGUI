@@ -23,14 +23,19 @@ import java.util.ResourceBundle;
  */
 public class PageController implements Initializable {
 
+    //outlets for the components specified by the fxml document
     @FXML
     Label titleLabel;
     @FXML
     VBox container;
 
-    Page page;
+    Page page; //the page that is being displayed
 
     @Override
+    /**
+     * Does the inital setup of the dynamic parts of the screen
+     * Specifically formats and writes all the chunks to the correct VBox
+     */
     public void initialize(URL location, ResourceBundle resources) {
         page = DataSingleton.getInstance().getCurrentPage();
         ArrayList<String> chunkNames = page.getChunkNames();
@@ -48,6 +53,9 @@ public class PageController implements Initializable {
 
     }
 
+    /**
+     * Returns to the previous screen
+     */
     public void goBackToSectionView(){
         Stage stage = (Stage) container.getScene().getWindow();
         DataSingleton.getInstance().setCurrentPage(null);

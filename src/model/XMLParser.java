@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 /**
  * Created by jamesowens on 4/11/17.
+ * Parses the an xml file into the format to be used by the rest of the app
  */
 public class XMLParser {
 
@@ -40,6 +41,10 @@ public class XMLParser {
 
     }
 
+    /**
+     * Parses the file and creates the data objects
+     * @return A list of all the parsed sections (these contain the pages)
+     */
     public ArrayList<Section> parsePages() {
         //get the page entry nodes
         //NodeList pageNodes = doc.getElementsByTagName("entry");
