@@ -51,10 +51,13 @@
             </HBox>
             <ScrollPane maxWidth="600.0" prefHeight="500.0">
                <content>
-                  <VBox fx:id="container" alignment="CENTER_LEFT" maxWidth="600.0">
+                  <VBox fx:id="container" alignment="CENTER" maxWidth="600.0">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
+                     <children>
+                        <Label alignment="CENTER" text="No results (search not implemented-out of scpe)" />
+                     </children>
                   </VBox>
                </content>
             </ScrollPane>
